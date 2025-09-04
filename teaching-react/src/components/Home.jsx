@@ -1,16 +1,21 @@
-import Header from './Header';
+
+import LoginForm from './LoginForm';
+import LoginButton from './LoginButtton';
+import {Drawer} from '@mui/material';
+import { useState } from 'react';
 
 function Home() {
+  const [open,setOpen]=useState(false);
   return (
     <div>
-      <Header />
-      <main style={{
-        padding: '2rem',
-        textAlign: 'center'
-      }}>
-        <h2>Welcome to Our React Application</h2>
-        <p>This is the home page of your React app.</p>
-      </main>
+      <LoginButton onClick={() => setOpen(true)} />
+
+      <Drawer anchor="right" open={open} onClose={()=>setOpen(false)}>
+        <LoginForm onClose={()=>setOpen(false)}/>
+      </Drawer>
+
+      
+
     </div>
   );
 }
