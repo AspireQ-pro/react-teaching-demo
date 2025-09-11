@@ -13,6 +13,12 @@ import { useState } from 'react'
 import { Provider } from 'react-redux'
 import Cart from './components/redux-state-management/Cart'
 import store from './components/redux-state-management/store'
+import ProfileCard from './components/ProfileCard'
+import styled from 'styled-components'
+import ResponsiveGrid from './components/mui-styling/ResponsiveGrid'
+import { CssBaseline,Box } from '@mui/material'
+import Sidebar from './components/Dashboard/Sidebar'
+import Dashboard from './components/Dashboard/Dashboard'
 
 
 //what is context api
@@ -20,6 +26,12 @@ import store from './components/redux-state-management/store'
 // without having to pass props down manually at every level. It provides a way to create global 
 // variables that can be passed around in a React app.
 
+const Button= styled.button`
+background:teal;
+color:white;
+padding:10px;
+border-radius:5px;
+`;
 const ThemeContext = createContext()
 
 function App() {
@@ -51,10 +63,23 @@ const [theme,setTheme]=useState('light');
     //   </div>
     // </ThemeContext.Provider>
 
-    <Provider store={store }>
-     <Cart />
-    </Provider>
+    // <Provider store={store }>
+    //  <Cart />
+    // </Provider>
+    //  <ProfileCard/>
+    //  <Button>Click Me</Button>
 
+
+    //  <ResponsiveGrid/>
+
+    <>
+    <CssBaseline>
+      <Box>
+        <Sidebar/>
+        <Dashboard/>
+      </Box>
+    </CssBaseline>
+    </>
   );
 }
 
@@ -79,3 +104,4 @@ function ThemeButton(){
 
 
 export default App
+
